@@ -1,0 +1,25 @@
+<div class="row">
+    <div class="col">
+        <div class="trainees-control">
+            <input class="trainees-control__filter" matInput type="text" (keyup)="child.applyFilter($event.target.value)" placeholder="Filter" [(ngModel)]="current_filter"/>
+            <button mat-button *ngIf="current_filter" matSuffix mat-icon-button aria-label="Clear" (click)="current_filter=''">
+                <mat-icon>close</mat-icon>
+            </button>
+            <button class="btn btn-success" (click)="onNewTestResult()">Add</button>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-8">
+                <art-student-result [studentResultInput]="studentResult | async" ></art-student-result>
+            </div>
+            <div class="col-md-4">
+                <router-outlet ></router-outlet>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+

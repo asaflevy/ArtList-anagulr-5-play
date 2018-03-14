@@ -1,0 +1,9 @@
+.trainees-control{
+    display: flex;
+    justify-content: space-around;
+    margin: 7px 20px;
+}
+
+.trainees-control__filter{
+    max-width: 200px;
+}

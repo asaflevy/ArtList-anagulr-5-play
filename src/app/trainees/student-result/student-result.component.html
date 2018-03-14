@@ -1,0 +1,48 @@
+<div class="example-container">
+    <!--{{studentResultInput | json}}-->
+    <mat-table #table [dataSource]="studentResultInput">
+
+        <!-- Position Column -->
+        <ng-container matColumnDef="Id">
+            <mat-header-cell *matHeaderCellDef> #ID</mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.Id}}</mat-cell>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="Name">
+            <mat-header-cell *matHeaderCellDef> Name</mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.Name}}</mat-cell>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="Date">
+            <mat-header-cell *matHeaderCellDef> Date</mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.Date | amDateFormat:'LL'}}</mat-cell>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="Grade">
+            <mat-header-cell *matHeaderCellDef> Grade</mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.Grade}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="Subject">
+            <mat-header-cell *matHeaderCellDef> Subject</mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{getSubject(element.Subject) | titlecase}}</mat-cell>
+        </ng-container>
+
+
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"
+                 [ngClass]="{'highlight': selectedRowIndex == row.Id}"
+                 (click)="onStudentSelected(row)"
+        ></mat-row>
+    </mat-table>
+
+    <mat-paginator #paginator
+                   [pageSize]="10"
+                   [pageSizeOptions]="[5, 10, 20]"
+                   [showFirstLastButtons]="true">
+    </mat-paginator>
+</div>

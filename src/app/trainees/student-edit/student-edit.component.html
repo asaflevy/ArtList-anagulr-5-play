@@ -1,0 +1,31 @@
+<form class="student-detail-form" *ngIf="studentDetails$" >
+    {{isEditMode | json}}
+    <mat-form-field class="full-width">
+        <input [disabled]="!isEditMode" matInput placeholder="Id" name="Id" [(ngModel)]="studentDetails$.Id">
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+        <input [disabled]="!isEditMode" matInput placeholder="Name" name="Name" [(ngModel)]="studentDetails$.Name">
+    </mat-form-field>
+
+    <mat-form-field>
+        <input [disabled]="!isEditMode"  matInput [matDatepicker]="picker1" placeholder="Date" [formControl]="date">
+        <mat-datepicker-toggle [disabled]="!isEditMode"matSuffix [for]="picker1"></mat-datepicker-toggle>
+        <mat-datepicker [disabled]="!isEditMode" #picker1></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+        <input [disabled]="!isEditMode" matInput placeholder="Grade" name="Grade" [(ngModel)]="studentDetails$.Grade">
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-select [disabled]="!isEditMode" placeholder="Subject" name="Subject" [(ngModel)]="studentDetails$.Subject">
+            <mat-option *ngFor="let subject of subjects$ | keyValue" [value]="+subject.key">
+                {{subject.value}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+
+
+
+</form>
